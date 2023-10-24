@@ -58,7 +58,7 @@ jobs:
             -url="${{ secrets.DB_PROD_URL }}" \
             -user="${{ secrets.DB_PROD_USERNAME }}" \
             -password="${{ secrets.DB_PROD_PASSWORD }}" \
-            -baselineOnMigrate=true check -changes -drift -dryrun -schemas="${{ env.SCHEMAS }}" -outOfOrder=true -connectRetries=10 \
+            -baselineOnMigrate=true check -code -schemas="${{ env.SCHEMAS }}" -outOfOrder=true -connectRetries=10 \
             -check.buildUrl="${{ secrets.DB_BUILD_URL }}" \
             -check.buildUser="${{ secrets.DB_BUILD_USERNAME }}" \
             -check.buildPassword="${{ secrets.DB_BUILD_PASSWORD }}" \
@@ -122,7 +122,7 @@ jobs:
             -url="${{ env.DB_PROD_URL }}" \
             -user="${{ env.DB_PROD_USERNAME }}" \
             -password="${{ env.DB_PROD_PASSWORD }}" \
-            -baselineOnMigrate=true check -changes -drift -dryrun -schemas=public -outOfOrder=true \
+            -baselineOnMigrate=true check -code -schemas=public -outOfOrder=true \
             -check.buildUrl="${{ secrets.DB_BUILD_URL }}" \
             -check.buildUser="${{ secrets.DB_BUILD_USERNAME }}" \
             -check.buildPassword="${{ secrets.DB_BUILD_PASSWORD }}" \ 
