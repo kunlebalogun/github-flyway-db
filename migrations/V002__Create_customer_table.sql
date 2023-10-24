@@ -1,4 +1,4 @@
--- Create the customer table
+--- Create the customer table
 CREATE TABLE customer.customer (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(255),
