@@ -33,7 +33,6 @@ jobs:
           docker run --rm
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
-          -licenseKey="${{ secrets.FLYWAY_LICENSE_KEY }}"
           -url="${{ secrets.DB_BUILD_URL }}"
           -user="${{ secrets.DB_BUILD_USERNAME }}"
           -password="${{ secrets.DB_BUILD_PASSWORD }}" 
@@ -44,7 +43,6 @@ jobs:
           docker run --rm
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
-          -licenseKey="${{ secrets.FLYWAY_LICENSE_KEY }}"
           -url="${{ secrets.DB_PROD_URL }}"
           -user="${{ secrets.DB_PROD_USERNAME }}" 
           -password="${{ secrets.DB_PROD_PASSWORD }}"
@@ -57,7 +55,6 @@ jobs:
             --volume ${{ github.workspace }}/reports:/flyway/reports \
             -e ${{ secrets.FLYWAY_LICENSE_KEY }} \
             "${{ env.DOCKER_IMAGE }}" \
-            -licenseKey="${{ secrets.FLYWAY_LICENSE_KEY }}" \
             -url="${{ secrets.DB_PROD_URL }}" \
             -user="${{ secrets.DB_PROD_USERNAME }}" \
             -password="${{ secrets.DB_PROD_PASSWORD }}" \
@@ -86,7 +83,6 @@ jobs:
           docker run --rm
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
-          -licenseKey="${{ secrets.FLYWAY_LICENSE_KEY }}"
           -url="${{ secrets.DB_TEST_URL }}"
           -user="${{ secrets.DB_TEST_USERNAME }}"
           -password="${{ secrets.DB_TEST_PASSWORD }}"  
@@ -95,7 +91,6 @@ jobs:
           docker run --rm
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
-          -licenseKey="${{ secrets.FLYWAY_LICENSE_KEY }}"
           -url="${{ secrets.DB_TEST_URL }}"
           -user="${{ secrets.DB_TEST_USERNAME }}"
           -password="${{ secrets.DB_TEST_PASSWORD }}"   
@@ -104,7 +99,6 @@ jobs:
           docker run --rm
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
-          -licenseKey="${{ secrets.FLYWAY_LICENSE_KEY }}"
           -url="${{ secrets.DB_TEST_URL }}"
           -user="${{ secrets.DB_TEST_USERNAME }}"
           -password="${{ secrets.DB_TEST_PASSWORD }}"   
@@ -125,7 +119,6 @@ jobs:
             --volume ${{ github.workspace }}/reports:/flyway/reports \
             -e ${{ secrets.FLYWAY_LICENSE_KEY }} \
             "${{ env.DOCKER_IMAGE }}" \
-            -licenseKey="${{ secrets.FLYWAY_LICENSE_KEY }}" \
             -url="${{ env.DB_PROD_URL }}" \
             -user="${{ env.DB_PROD_USERNAME }}" \
             -password="${{ env.DB_PROD_PASSWORD }}" \
@@ -145,7 +138,6 @@ jobs:
           docker run --rm
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
-          -licenseKey="${{ secrets.FLYWAY_LICENSE_KEY }}" 
           -url="${{ secrets.DB_PROD_URL }}"
           -user="${{ secrets.DB_PROD_USERNAME }}"
           -password="${{ secrets.DB_PROD_PASSWORD }}" 
@@ -154,7 +146,6 @@ jobs:
           docker run --rm
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
-          -licenseKey="${{ secrets.FLYWAY_LICENSE_KEY }}" 
           -url="${{ secrets.DB_PROD_URL }}"
           -user="${{ secrets.DB_PROD_USERNAME }}"
           -password="${{ secrets.DB_PROD_PASSWORD }}" 
@@ -163,7 +154,6 @@ jobs:
           docker run --rm
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
-          -licenseKey="${{ secrets.FLYWAY_LICENSE_KEY }}" 
           -url="${{ secrets.DB_PROD_URL }}"
           -user="${{ secrets.DB_PROD_USERNAME }}"
           -password="${{ secrets.DB_PROD_PASSWORD }}"
