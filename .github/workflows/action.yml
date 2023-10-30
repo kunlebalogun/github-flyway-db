@@ -3,7 +3,7 @@ name: 'PostgreSQL GitHub DevOps Pipeline'
 on:
   push:
     branches:
-      - main
+      - master
       
 env:
     SQLFLUFF_DIALECT: postgres
@@ -22,6 +22,7 @@ jobs:
       - name: Continuous Integration Flyway Clean Migrate
         run: >-
           docker run --rm
+          --volume ${{ github.workspace }}/conf:/flyway/conf
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
           -url="${{ secrets.DB_BUILD_URL }}"
@@ -31,6 +32,7 @@ jobs:
       - name: Flyway Info
         run: >-
           docker run --rm
+          --volume ${{ github.workspace }}/conf:/flyway/conf
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
           -url="${{ secrets.DB_BUILD_URL }}"
@@ -41,6 +43,7 @@ jobs:
       - name: Flyway Info Production
         run: >-
           docker run --rm
+          --volume ${{ github.workspace }}/conf:/flyway/conf
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
           -url="${{ secrets.DB_PROD_URL }}"
@@ -59,6 +62,7 @@ jobs:
    
       - run: >-    
           docker run --rm
+          --volume ${{ github.workspace }}/conf:/flyway/conf
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
           -url="${{ secrets.DB_TEST_URL }}"
@@ -67,6 +71,7 @@ jobs:
           info -schemas="${{ env.SCHEMAS }}"
       - run: >-
           docker run --rm
+          --volume ${{ github.workspace }}/conf:/flyway/conf
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
           -url="${{ secrets.DB_TEST_URL }}"
@@ -75,6 +80,7 @@ jobs:
           migrate -schemas="${{ env.SCHEMAS }}" -outOfOrder=true 
       - run: >-
           docker run --rm
+          --volume ${{ github.workspace }}/conf:/flyway/conf
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
           -url="${{ secrets.DB_TEST_URL }}"
@@ -98,6 +104,7 @@ jobs:
           
       - run: >-           
           docker run --rm
+          --volume ${{ github.workspace }}/conf:/flyway/conf
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
           -url="${{ secrets.DB_PROD_URL }}"
@@ -106,6 +113,7 @@ jobs:
           info -schemas="${{ env.SCHEMAS }}"
       - run: >-
           docker run --rm
+          --volume ${{ github.workspace }}/conf:/flyway/conf
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
           -url="${{ secrets.DB_PROD_URL }}"
@@ -114,6 +122,7 @@ jobs:
           migrate -schemas="${{ env.SCHEMAS }}" -outOfOrder=true
       - run: >-
           docker run --rm
+          --volume ${{ github.workspace }}/conf:/flyway/conf
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
           -url="${{ secrets.DB_PROD_URL }}"
