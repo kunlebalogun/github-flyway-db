@@ -1,4 +1,4 @@
-name: 'PostgreSQL GitHub DevOps Pipeline'
+name: 'Database Migration via GitHub Pipeline using Flyway'
  
 on:
   push:
