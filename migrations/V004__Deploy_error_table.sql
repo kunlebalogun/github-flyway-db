@@ -24,8 +24,8 @@ CREATE TABLE november.lingus2 (
 -- lingus3 -- Error in syntax (missing comma)
 CREATE TABLE november.lingus3 (
     id SERIAL PRIMARY KEY,
-    first_name VARCHAR(255)
-    last_name VARCHAR(255)
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
     email VARCHAR(255),
     phone_number VARCHAR(20),
     address TEXT
@@ -42,4 +42,4 @@ CREATE TABLE november.lingus4 (
 
 --- Drop schema
 
-drop schema november cascade;
+---drop schema november cascade;
