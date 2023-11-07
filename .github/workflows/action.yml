@@ -89,7 +89,7 @@ jobs:
           info -schemas="${{ env.SCHEMAS }}"
  
   Deploy-Prod:
-    name: Deploy Prod
+    name: Deploy Prod 
     needs: Deploy-Test
     runs-on: ubuntu-latest       
     steps:
