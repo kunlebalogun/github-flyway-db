@@ -1,7 +1,8 @@
 CREATE SCHEMA IF NOT EXISTS november;
 
 -- Create the lingus table
-CREATE TABLE november.lingus1 (
+
+CREATE TABLE IF NOT EXISTS november.lingus1 (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(255),
     last_name VARCHAR(255),
@@ -11,7 +12,7 @@ CREATE TABLE november.lingus1 (
 );
 
 --lingus2
-CREATE TABLE november.lingus2 (
+CREATE TABLE IF NOT EXISTS november.lingus2 (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(255),
     last_name VARCHAR(255),
@@ -22,7 +23,7 @@ CREATE TABLE november.lingus2 (
 
 
 -- lingus3 -- Error in syntax (missing comma)
-CREATE TABLE november.lingus3 (
+CREATE TABLE IF NOT EXISTS  november.lingus3 (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(255),
     last_name VARCHAR(255),
@@ -31,7 +32,7 @@ CREATE TABLE november.lingus3 (
     address TEXT
 );
 
-CREATE TABLE november.lingus4 (
+CREATE TABLE IF NOT EXISTS november.lingus4 (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(255),
     last_name VARCHAR(255),
@@ -42,4 +43,4 @@ CREATE TABLE november.lingus4 (
 
 --- Drop schema
 
----drop schema november cascade;
+DROP schema november cascade;
