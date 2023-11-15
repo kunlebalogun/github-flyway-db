@@ -57,7 +57,6 @@ jobs:
       - name: Flyway Check
         run: >-
           docker run --rm \
-	  --volume ${{ github.workspace }}/conf:/flyway/conf \
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro \
           --volume ${{ github.workspace }}/reports:/flyway/reports \
           -e ${{ secrets.MO_GBE }} \
