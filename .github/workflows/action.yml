@@ -54,7 +54,30 @@ jobs:
           -password="${{ secrets.DB_PROD_PASSWORD }}"
           info -schemas="${{ env.SCHEMAS }}"
  
-        
+      - name: Flyway Check
+        run: >-
+          docker run --rm \
+		          --volume ${{ github.workspace }}/conf:/flyway/conf \
+            --volume ${{ github.workspace }}/migrations:/flyway/sql:ro \
+            --volume ${{ github.workspace }}/reports:/flyway/reports \
+            -e ${{ secrets.MO_GBE }} \
+            "${{ env.DOCKER_IMAGE }}" \
+            -licenseKey="${{ secrets.MO_GBE }}" \
+            -url="${{ secrets.DB_PROD_URL }}" \
+            -user="${{ secrets.DB_PROD_USERNAME }}" \
+            -password="${{ secrets.DB_PROD_PASSWORD }}" \
+            -baselineOnMigrate=true check -changes -drift -dryrun -schemas="${{ env.SCHEMAS }}" -outOfOrder=true -connectRetries=10 \
+            -check.buildUrl="${{ secrets.DB_BUILD_URL }}" \
+            -check.buildUser="${{ secrets.DB_BUILD_USERNAME }}" \
+            -check.buildPassword="${{ secrets.DB_BUILD_PASSWORD }}" \
+            -check.reportFilename="/flyway/reports/report.html"
+            
+      - name: Upload report
+        uses: actions/upload-artifact@v3
+        with:
+          name: Database Report
+          path: reports/
+ 
   Deploy-Test:
     name: Deploy Test
     needs: Continuous-Integration-Build
@@ -102,6 +125,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3.0.0
        
+      - name: Flyway Check
+        run: >-
+          docker run --rm \
+		          --volume ${{ github.workspace }}/conf:/flyway/conf \
+            --volume ${{ github.workspace }}/migrations:/flyway/sql:ro \
+            --volume ${{ github.workspace }}/reports:/flyway/reports \
+            -e ${{ secrets.MO_GBE }} \
+            "${{ env.DOCKER_IMAGE }}" \
+            -licenseKey="${{ secrets.MO_GBE }}" \
+            -url="${{ env.DB_PROD_URL }}" \
+            -user="${{ env.DB_PROD_USERNAME }}" \
+            -password="${{ env.DB_PROD_PASSWORD }}" \
+            -baselineOnMigrate=true check -changes -drift -dryrun -schemas=public -outOfOrder=true \
+            -check.buildUrl="${{ secrets.DB_BUILD_URL }}" \
+            -check.buildUser="${{ secrets.DB_BUILD_USERNAME }}" \
+            -check.buildPassword="${{ secrets.DB_BUILD_PASSWORD }}" \ 
+            -check.reportFilename="/flyway/reports/report.html"
+            
       - name: Upload report
         uses: actions/upload-artifact@v3.0.0
         with:
