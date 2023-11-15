@@ -3,7 +3,7 @@ name: 'Database Migration via GitHub Pipeline using Flyway'
 on:
   push:
     branches:
-      - mainx
+      - main
       
 env:
     SQLFLUFF_DIALECT: postgres
