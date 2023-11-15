@@ -56,19 +56,19 @@ jobs:
  
       - name: Flyway Check
         run: >-
-          docker run --rm \
-          --volume ${{ github.workspace }}/migrations:/flyway/sql:ro \
-          --volume ${{ github.workspace }}/reports:/flyway/reports \
-          -e ${{ secrets.MO_GBE }} \
-          "${{ env.DOCKER_IMAGE }}" \
-          -licenseKey="${{ secrets.MO_GBE }}" \
-          -url="${{ secrets.DB_PROD_URL }}" \
-          -user="${{ secrets.DB_PROD_USERNAME }}" \
-          -password="${{ secrets.DB_PROD_PASSWORD }}" \
-          -baselineOnMigrate=true check -changes -drift -dryrun -schemas="${{ env.SCHEMAS }}" -outOfOrder=true -connectRetries=10 \
-          -check.buildUrl="${{ secrets.DB_BUILD_URL }}" \
-          -check.buildUser="${{ secrets.DB_BUILD_USERNAME }}" \
-          -check.buildPassword="${{ secrets.DB_BUILD_PASSWORD }}" \
+          docker run --rm 
+          --volume ${{ github.workspace }}/migrations:/flyway/sql:ro 
+          --volume ${{ github.workspace }}/reports:/flyway/reports 
+          -e ${{ secrets.MO_GBE }} 
+          "${{ env.DOCKER_IMAGE }}" 
+          -licenseKey="${{ secrets.MO_GBE }}" 
+          -url="${{ secrets.DB_PROD_URL }}" 
+          -user="${{ secrets.DB_PROD_USERNAME }}" 
+          -password="${{ secrets.DB_PROD_PASSWORD }}" 
+          -baselineOnMigrate=true check -changes -drift -dryrun -schemas="${{ env.SCHEMAS }}" -outOfOrder=true -connectRetries=10 
+          -check.buildUrl="${{ secrets.DB_BUILD_URL }}" 
+          -check.buildUser="${{ secrets.DB_BUILD_USERNAME }}" 
+          -check.buildPassword="${{ secrets.DB_BUILD_PASSWORD }}" 
           -check.reportFilename="/flyway/reports/report.html"
             
       - name: Upload report
@@ -126,19 +126,19 @@ jobs:
        
       - name: Flyway Check
         run: >-
-          docker run --rm \
-          --volume ${{ github.workspace }}/migrations:/flyway/sql:ro \
-          --volume ${{ github.workspace }}/reports:/flyway/reports \
-          -e ${{ secrets.MO_GBE }} \
-          "${{ env.DOCKER_IMAGE }}" \
-          -licenseKey="${{ secrets.MO_GBE }}" \
-          -url="${{ env.DB_PROD_URL }}" \
-          -user="${{ env.DB_PROD_USERNAME }}" \
-          -password="${{ env.DB_PROD_PASSWORD }}" \
-          -baselineOnMigrate=true check -changes -drift -dryrun -schemas=public -outOfOrder=true \
-          -check.buildUrl="${{ secrets.DB_BUILD_URL }}" \
-          -check.buildUser="${{ secrets.DB_BUILD_USERNAME }}" \
-          -check.buildPassword="${{ secrets.DB_BUILD_PASSWORD }}" \ 
+          docker run --rm 
+          --volume ${{ github.workspace }}/migrations:/flyway/sql:ro 
+          --volume ${{ github.workspace }}/reports:/flyway/reports 
+          -e ${{ secrets.MO_GBE }} 
+          "${{ env.DOCKER_IMAGE }}" 
+          -licenseKey="${{ secrets.MO_GBE }}" 
+          -url="${{ env.DB_PROD_URL }}" 
+          -user="${{ env.DB_PROD_USERNAME }}" 
+          -password="${{ env.DB_PROD_PASSWORD }}" 
+          -baselineOnMigrate=true check -changes -drift -dryrun -schemas=public -outOfOrder=true 
+          -check.buildUrl="${{ secrets.DB_BUILD_URL }}" 
+          -check.buildUser="${{ secrets.DB_BUILD_USERNAME }}" 
+          -check.buildPassword="${{ secrets.DB_BUILD_PASSWORD }}"  
           -check.reportFilename="/flyway/reports/report.html"
             
       - name: Upload report
