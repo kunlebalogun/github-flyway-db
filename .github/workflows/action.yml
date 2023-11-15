@@ -3,7 +3,7 @@ name: 'Database Migration via GitHub Pipeline using Flyway'
 on:
   push:
     branches:
-      - main
+      - mainx
       
 env:
     SQLFLUFF_DIALECT: postgres
@@ -25,6 +25,7 @@ jobs:
           --volume ${{ github.workspace }}/conf:/flyway/conf
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
+          -licenseKey="${{ secrets.MO_GBE }}"
           -url="${{ secrets.DB_BUILD_URL }}"
           -user="${{ secrets.DB_BUILD_USERNAME }}"
           -password="${{ secrets.DB_BUILD_PASSWORD }}"
@@ -35,6 +36,7 @@ jobs:
           --volume ${{ github.workspace }}/conf:/flyway/conf
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
+          -licenseKey="${{ secrets.MO_GBE }}"
           -url="${{ secrets.DB_BUILD_URL }}"
           -user="${{ secrets.DB_BUILD_USERNAME }}"
           -password="${{ secrets.DB_BUILD_PASSWORD }}" 
@@ -46,6 +48,7 @@ jobs:
           --volume ${{ github.workspace }}/conf:/flyway/conf
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
+          -licenseKey="${{ secrets.MO_GBE }}"
           -url="${{ secrets.DB_PROD_URL }}"
           -user="${{ secrets.DB_PROD_USERNAME }}" 
           -password="${{ secrets.DB_PROD_PASSWORD }}"
@@ -65,6 +68,7 @@ jobs:
           --volume ${{ github.workspace }}/conf:/flyway/conf
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
+          -licenseKey="${{ secrets.MO_GBE }}"
           -url="${{ secrets.DB_TEST_URL }}"
           -user="${{ secrets.DB_TEST_USERNAME }}"
           -password="${{ secrets.DB_TEST_PASSWORD }}"  
@@ -74,6 +78,7 @@ jobs:
           --volume ${{ github.workspace }}/conf:/flyway/conf
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
+          -licenseKey="${{ secrets.MO_GBE }}"
           -url="${{ secrets.DB_TEST_URL }}"
           -user="${{ secrets.DB_TEST_USERNAME }}"
           -password="${{ secrets.DB_TEST_PASSWORD }}"   
@@ -83,6 +88,7 @@ jobs:
           --volume ${{ github.workspace }}/conf:/flyway/conf
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
+          -licenseKey="${{ secrets.MO_GBE }}"
           -url="${{ secrets.DB_TEST_URL }}"
           -user="${{ secrets.DB_TEST_USERNAME }}"
           -password="${{ secrets.DB_TEST_PASSWORD }}"   
@@ -107,6 +113,7 @@ jobs:
           --volume ${{ github.workspace }}/conf:/flyway/conf
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
+          -licenseKey="${{ secrets.MO_GBE }}"          
           -url="${{ secrets.DB_PROD_URL }}"
           -user="${{ secrets.DB_PROD_USERNAME }}"
           -password="${{ secrets.DB_PROD_PASSWORD }}" 
@@ -116,6 +123,7 @@ jobs:
           --volume ${{ github.workspace }}/conf:/flyway/conf
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
+          -licenseKey="${{ secrets.MO_GBE }}"          
           -url="${{ secrets.DB_PROD_URL }}"
           -user="${{ secrets.DB_PROD_USERNAME }}"
           -password="${{ secrets.DB_PROD_PASSWORD }}" 
@@ -125,6 +133,7 @@ jobs:
           --volume ${{ github.workspace }}/conf:/flyway/conf
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           "${{ env.DOCKER_IMAGE }}"
+          -licenseKey="${{ secrets.MO_GBE }}"          
           -url="${{ secrets.DB_PROD_URL }}"
           -user="${{ secrets.DB_PROD_USERNAME }}"
           -password="${{ secrets.DB_PROD_PASSWORD }}"
