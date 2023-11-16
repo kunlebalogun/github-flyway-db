@@ -57,8 +57,9 @@ jobs:
       - name: Flyway Check
         run: >-
           docker run --rm 
-          --volume ${{ github.workspace }}/migrations:/flyway/sql:ro 
-          --volume ${{ github.workspace }}/reports:/flyway/reports 
+          -v ${{ github.workspace }}/migrations:/flyway/sql:ro 
+          -v ${{ github.workspace }}/reports:/flyway/reports
+          -v ${{ github.workspace }}/conf:/flyway/conf 
           -e ${{ secrets.MO_GBE }} 
           "${{ env.DOCKER_IMAGE }}" 
           -licenseKey="${{ secrets.MO_GBE }}" 
@@ -127,8 +128,9 @@ jobs:
       - name: Flyway Check
         run: >-
           docker run --rm 
-          --volume ${{ github.workspace }}/migrations:/flyway/sql:ro 
-          --volume ${{ github.workspace }}/reports:/flyway/reports 
+          -v ${{ github.workspace }}/migrations:/flyway/sql:ro 
+          -v ${{ github.workspace }}/reports:/flyway/reports
+          -v ${{ github.workspace }}/conf:/flyway/conf 
           -e ${{ secrets.MO_GBE }} 
           "${{ env.DOCKER_IMAGE }}" 
           -licenseKey="${{ secrets.MO_GBE }}" 
