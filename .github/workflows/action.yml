@@ -70,7 +70,7 @@ jobs:
           -check.buildUrl="${{ secrets.DB_BUILD_URL }}" 
           -check.buildUser="${{ secrets.DB_BUILD_USERNAME }}" 
           -check.buildPassword="${{ secrets.DB_BUILD_PASSWORD }}" 
-          -reportFilename="/flyway/reports/report.html"
+          -check.reportFilename="/flyway/reports/report.html"
             
       - name: Upload report
         uses: actions/upload-artifact@v3
@@ -141,7 +141,7 @@ jobs:
           -check.buildUrl="${{ secrets.DB_BUILD_URL }}" 
           -check.buildUser="${{ secrets.DB_BUILD_USERNAME }}" 
           -check.buildPassword="${{ secrets.DB_BUILD_PASSWORD }}"  
-          -reportFilename="/flyway/reports/report.html"
+          -check.reportFilename="/flyway/reports/report.html"
             
       - name: Upload report
         uses: actions/upload-artifact@v3.0.0
