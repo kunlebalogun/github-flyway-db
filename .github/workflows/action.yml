@@ -3,7 +3,7 @@ name: 'Database Migration via GitHub Pipeline using Flyway'
 on:
   push:
     branches:
-      - mainx
+      - main
       
 env:
     SQLFLUFF_DIALECT: postgres
@@ -30,6 +30,7 @@ jobs:
           -user="${{ secrets.DB_BUILD_USERNAME }}"
           -password="${{ secrets.DB_BUILD_PASSWORD }}"
           -cleanDisabled=false clean migrate -schemas="${{ env.SCHEMAS }}"
+          
       - name: Flyway Info
         run: >-
           docker run --rm
@@ -67,9 +68,6 @@ jobs:
           -user="${{ secrets.DB_PROD_USERNAME }}" 
           -password="${{ secrets.DB_PROD_PASSWORD }}" 
           -baselineOnMigrate=true check -changes -drift -dryrun -schemas="${{ env.SCHEMAS }}" -outOfOrder=true -connectRetries=10 
-          -check.buildUrl="${{ secrets.DB_BUILD_URL }}" 
-          -check.buildUser="${{ secrets.DB_BUILD_USERNAME }}" 
-          -check.buildPassword="${{ secrets.DB_BUILD_PASSWORD }}" 
             
       - name: Upload report
         uses: actions/upload-artifact@v3
@@ -137,10 +135,6 @@ jobs:
           -user="${{ env.DB_PROD_USERNAME }}" 
           -password="${{ env.DB_PROD_PASSWORD }}" 
           -baselineOnMigrate=true check -changes -drift -dryrun -schemas=public -outOfOrder=true 
-          -check.buildUrl="${{ secrets.DB_BUILD_URL }}" 
-          -check.buildUser="${{ secrets.DB_BUILD_USERNAME }}" 
-          -check.buildPassword="${{ secrets.DB_BUILD_PASSWORD }}"  
-          -check.reportFilename="/flyway/reports/report.html"
             
       - name: Upload report
         uses: actions/upload-artifact@v3.0.0
