@@ -67,7 +67,7 @@ jobs:
           -url="${{ secrets.DB_PROD_URL }}" 
           -user="${{ secrets.DB_PROD_USERNAME }}" 
           -password="${{ secrets.DB_PROD_PASSWORD }}" 
-          -baselineOnMigrate=true check -changes -drift -dryrun -schemas="${{ env.SCHEMAS }}" -outOfOrder=true -connectRetries=10 -check.buildEnvironment="build" -Url="${{ secrets.DB_BUILD_URL }}"
+          -baselineOnMigrate=true check -changes -drift -dryrun -schemas="${{ env.SCHEMAS }}" -outOfOrder=true -connectRetries=10 -check.buildEnvironment="build" -url="${{ secrets.DB_BUILD_URL }}"
             
       - name: Upload report
         uses: actions/upload-artifact@v3
@@ -134,7 +134,7 @@ jobs:
           -url="${{ env.DB_PROD_URL }}" 
           -user="${{ env.DB_PROD_USERNAME }}" 
           -password="${{ env.DB_PROD_PASSWORD }}" 
-          -baselineOnMigrate=true check -changes -drift -dryrun -schemas=public -outOfOrder=true -check.buildEnvironment="build" -Url="${{ secrets.DB_BUILD_URL }}"
+          -baselineOnMigrate=true check -changes -drift -dryrun -schemas=public -outOfOrder=true -check.buildEnvironment="build" -url="${{ secrets.DB_BUILD_URL }}"
             
       - name: Upload report
         uses: actions/upload-artifact@v3.0.0
