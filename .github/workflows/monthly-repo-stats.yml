@@ -7,7 +7,7 @@ jobs:
   evaluate-actions-consumption:
     runs-on: ubuntu-latest
     env:
-      GH_TOKEN: ${{ secrets.BOB_KEN }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       OWNER_NAME: ${{ github.repository_owner }}
 
     steps:
@@ -25,7 +25,7 @@ jobs:
       - name: Call workflow-runs action
         uses: kittychiu/workflow-metrics@v0.4.7
         env:
-          GH_TOKEN: ${{ secrets.BOB_KEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO_NAME: ${{ env.REPO_NAME }}
           START_DATE: ${{ env.START_DATE }}
           END_DATE: ${{ env.END_DATE }}
