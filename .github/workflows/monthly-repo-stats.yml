@@ -1,8 +1,6 @@
 name: Org Repo Metrics Report
 
 on:
-  pull_request:
-    types: [synchronize]
   workflow_dispatch:
     inputs:
       fromdate: 2023-11-01
