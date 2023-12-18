@@ -6,11 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       fromdate: 2023-11-01
-        description: 'Optional interval start date (format: yyyy-mm-dd)'
-        required: false # Skipped if workflow dispatch input is not provided
       todate: 2023-12-18
-        description: 'Optional interval end date (format: yyyy-mm-dd)'
-        required: false # Skipped if workflow dispatch input is not provided
 
 jobs:
   org-repo-metrics-report:
