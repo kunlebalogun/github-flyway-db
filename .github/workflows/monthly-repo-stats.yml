@@ -3,9 +3,12 @@ name: Org Repo Metrics Report
 on:
   workflow_dispatch:
     inputs:
-      fromdate: 2023-11-01
-      todate: 2023-12-18
-
+      fromdate:
+        description: '2023-11-01'
+        required: false # Skipped if workflow dispatch input is not provided
+      todate:
+        description: '2023-12-18'
+        required: false # Skipped if workflow dispatch input is not provided
 jobs:
   org-repo-metrics-report:
     runs-on: ubuntu-latest
